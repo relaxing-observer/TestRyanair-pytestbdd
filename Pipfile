@@ -6,8 +6,13 @@ name = "pypi"
 [packages]
 pytest = "*"
 pytest-bdd = "*"
+atomicwrites = "*"
+requests = "*"
+selenium = "*"
+webdriver-manager = "*"
+allure-pytest = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.10"
