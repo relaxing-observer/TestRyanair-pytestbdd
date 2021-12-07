@@ -69,7 +69,7 @@ class BrowserHelper(BasePage):
         """
         # logger.info(f"Waiting for element {how}, '{what}' become visible for {3} seconds")
         required_element = WebDriverWait(self.browser, timeout).until(
-            expected_conditions.element_to_be_clickable((how, what)))
+            expected_conditions.visibility_of_element_located((how, what)))
         return required_element
 
     @allure.step(f"Waiting for element by '{1}', '{2}' become visible during {3} seconds")
@@ -80,7 +80,7 @@ class BrowserHelper(BasePage):
         """
         # logger.info(f"Waiting for element {how}, '{what}' become visible for {3} seconds")
         required_element = WebDriverWait(self.browser, timeout).until(
-            expected_conditions.visibility_of_element_located((how, what)))
+            expected_conditions.element_to_be_clickable((how, what)))
         return required_element
 
     # @allure.step(f"Clicking at element by '{1}', '{2}' become visible during {3} seconds")
