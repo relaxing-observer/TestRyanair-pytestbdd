@@ -1,5 +1,5 @@
 """
-This module contains step definitions for cucumbers.feature.
+This module contains step definitions for flights search feature.
 It uses Selenium WebDriver for browser interactions
 """
 
@@ -44,12 +44,12 @@ def input_depart_date(browser, depart_date):
 def input_return_date(browser, return_date):
     user_main_page = UserMainPage(browser, browser.current_url)
     user_main_page.input_return_date(return_date)
-    user_main_page.go_search()
+    user_main_page.go_flight_search()
 
 
 @then(parsers.cfparse('I should see flight cards from {departure_airport} to {destination_airport} at {depart_date} '
                       'and {return_date}'))
-def be_flights_contents(browser, departure_airport, destination_airport, depart_date, return_date):
+def should_be_flights(browser, departure_airport, destination_airport, depart_date, return_date):
     search_flight_page = SearchFlightsPage(browser, browser.current_url)
     search_flight_page.should_be_correct_page_url()
     search_flight_page.should_be_flight_card()

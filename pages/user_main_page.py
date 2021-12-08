@@ -21,16 +21,51 @@ class UserMainPage(BrowserHelper, BasePage):
         confirmation_button.click()
 
     @allure.step("Input destination airport")
-    def input_destination_airport(self, name_airport):
+    def input_destination_airport(self, airport_name):
         """
         Method inputs name of destination airport in form
         """
         destination_form = self.find_clickable_element(*UserMainPageLocators.INPUT_DESTINATION_FORM)
         destination_form.click()
         destination_form.clear()
-        destination_form.send_keys(name_airport)
+        destination_form.send_keys(airport_name)
         confirmation_button = self.find_visible_element(*UserMainPageLocators.CONFIRMATION_AIRPORT)
         confirmation_button.click()
+
+    @allure.step("Input destination hotel")
+    def input_destination_hotel_location(self, hotel_name):
+        """
+        Method inputs name of destination location
+        """
+        destination_form = self.find_visible_element(*UserMainPageLocators.DESTINATION_HOTEL_FORM)
+        destination_form.click()
+        destination_form.send_keys(hotel_name)
+        confirmation_button = self.find_visible_element(*UserMainPageLocators.CONFIRMATION_HOTEL)
+        confirmation_button.click()
+
+    @allure.step
+    def input_check_in_date(self, check_in_date):
+        """
+        Method inputs date of check-in
+        """
+        check_in_form = self.find_visible_element(*UserMainPageLocators.CHECK_IN_FORM)
+        check_in_form.click()
+        check_in_month = self.find_visible_element(*DatePickerLocators.get_month_button(check_in_date))
+        check_in_month.click()
+        check_in_day = self.find_visible_element(*DatePickerLocators.get_day_button(check_in_date))
+        check_in_day.click()
+
+    @allure.step
+    def input_check_out_date(self, check_out_date):
+        """
+        Method inputs date of check-out
+        """
+        check_out_form = self.find_visible_element(*UserMainPageLocators.CHECK_OUT_FORM)
+        check_out_form.click()
+        check_out_month = self.find_visible_element(*DatePickerLocators.get_month_button(check_out_date))
+        check_out_month.click()
+        check_out_day = self.find_visible_element(*DatePickerLocators.get_day_button(check_out_date))
+        check_out_day.click()
 
     @allure.step("Input depart date")
     def input_depart_date(self, depart_date):
@@ -55,13 +90,29 @@ class UserMainPage(BrowserHelper, BasePage):
         return_day.click()
 
 
-    @allure.step("Go searching")
-    def go_search(self):
+    @allure.step("Go searching flights")
+    def go_flight_search(self):
         """
         Method clicks on Search button and start searching
         """
-        search_button = self.find_visible_element(*UserMainPageLocators.SEARCH_BUTTON)
+        search_button = self.find_visible_element(*UserMainPageLocators.SEARCH_FLIGHT_BUTTON)
         search_button.click()
+
+    @allure.step("Go searching hotels")
+    def go_hotel_search(self):
+        """
+        Method clicks on Search button and start searching
+        """
+        search_button = self.find_visible_element(*UserMainPageLocators.SEARCH_HOTEL_BUTTON)
+        search_button.click()
+
+    @allure.step("Go to hotels tab")
+    def go_to_hotels(self):
+        """
+        Method clicks on Hotels tab
+        """
+        hotels_tab = self.find_visible_element(*UserMainPageLocators.HOTELS_TAB)
+        hotels_tab.click()
 
     @allure.step("Log out")
     def log_out(self):

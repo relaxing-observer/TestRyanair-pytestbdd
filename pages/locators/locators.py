@@ -23,7 +23,13 @@ class UserMainPageLocators:
     INPUT_DESTINATION_FORM = (By.XPATH, "//input[@id='input-button__destination']")
     CONFIRMATION_AIRPORT = (By.XPATH, "(//span[@data-ref='airport-item__name'])[last()]")
     FRAME_DATEPICKER = (By.XPATH, "//iframe[@id='_hjRemoteVarsFrame']")
-    SEARCH_BUTTON = (By.XPATH, "//button[@data-ref='flight-search-widget__cta']")
+    SEARCH_FLIGHT_BUTTON = (By.XPATH, "//button[@data-ref='flight-search-widget__cta']")
+    HOTELS_TAB = (By.XPATH, "//hp-search-widget-tab[@iconid='glyphs/hotels']")
+    DESTINATION_HOTEL_FORM = (By.XPATH, "//*[@id='input-button__locations-or-properties']")
+    CONFIRMATION_HOTEL = (By.XPATH, "//icon[@iconid='glyphs/destination-pin']")
+    CHECK_IN_FORM = (By.XPATH, "//hp-input-button[@uniqueid='check-in']")
+    CHECK_OUT_FORM = (By.XPATH, "//hp-input-button[@uniqueid='check-out']")
+    SEARCH_HOTEL_BUTTON = (By.XPATH, "//button[@data-ref='rooms-search-widget__cta']")
 
 class SearchFlightsPageLocators:
     URL_IDENTIFIER = ("trip/flights/select")
@@ -52,6 +58,11 @@ class SearchFlightsPageLocators:
             f"//h4[@class='ng-tns-c55-3 ng-star-inserted' and contains(text(),'{destination}')]")
         return DESTINATION_LOCATION_HEADER
 
+class SearchHotelsPageLocators:
+    URL_IDENTIFIER = "rooms.ryanair.com"
+    ACCOMODATION_CARD = (By.XPATH, "//rooms-accommodation-card[@class]")
+    ACCEPT_COOKIES_BUTTON = (By.XPATH,
+                             "//div[@id='cookie-popup-with-overlay']//button[@class='cookie-popup-with-overlay__button']")
 
 class DatePickerLocators():
     RETURN_FORM = (By.XPATH, "//fsw-input-button[@uniqueid='dates-to']")
