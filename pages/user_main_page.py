@@ -1,8 +1,10 @@
 import allure
+
 from pages.base_page import BasePage
 from utils.browser_helper import BrowserHelper
-from .locators.locators import UserMainPageLocators
 from .locators.locators import DatePickerLocators
+from .locators.locators import MainHeaderLocators
+from .locators.locators import UserMainPageLocators
 
 
 class UserMainPage(BrowserHelper, BasePage):
@@ -45,10 +47,13 @@ class UserMainPage(BrowserHelper, BasePage):
         """
         Method inputs date of returning
         """
+        return_form = self.find_visible_element(*DatePickerLocators.RETURN_FORM)
+        return_form.click()
         return_month = self.find_visible_element(*DatePickerLocators.get_month_button(return_date))
         return_month.click()
         return_day = self.find_visible_element(*DatePickerLocators.get_day_button(return_date))
         return_day.click()
+
 
     @allure.step("Go searching")
     def go_search(self):
@@ -58,3 +63,12 @@ class UserMainPage(BrowserHelper, BasePage):
         search_button = self.find_visible_element(*UserMainPageLocators.SEARCH_BUTTON)
         search_button.click()
 
+    @allure.step("Log out")
+    def log_out(self):
+        """
+        Method logs out form service
+        """
+        dropdown_profile = self.find_visible_element(*MainHeaderLocators.DROPDOWN_PROFILE)
+        dropdown_profile.click()
+        log_out_button = self.find_visible_element(*MainHeaderLocators.LOG_OUT_BUTTON)
+        log_out_button.click()

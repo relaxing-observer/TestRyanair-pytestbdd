@@ -2,53 +2,60 @@
 This module contains step definitions for cucumbers.feature.
 It uses Selenium WebDriver for browser interactions
 """
-import time
 
-import pytest
 from pytest_bdd import scenarios, given, when, then, parsers
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+
+from pages.guest_main_page import GuestMainPage
+from pages.search_flights_page import SearchFlightsPage
 from pages.user_main_page import UserMainPage
-
 from utils.links import Links
-
-CONVERTERS = {
-    'departure airport': str,
-    'destination airport': str,
-    'depart date': str,
-    'return date': str,
-}
 
 scenarios('../features/flight_search.feature')
 
 
+@given('I am on main page', target_fixture='user_on_main_page')
+def user_on_main_page(browser):
+    guest_main_page = GuestMainPage(browser, Links.MAIN_PAGE_LINK, timeout=0)
+    guest_main_page.open()
+    guest_main_page.accept_cookies()
+    guest_main_page.go_to_sign_in()
+    guest_main_page.sign_in_user()
 
-@when(parsers.cfparse('I input "{departure_airport}" to From Airport Form'), converters=CONVERTERS)
+
+@when(parsers.cfparse('I input {departure_airport} to From Airport Form'))
 def input_departure_location(browser, departure_airport):
     user_main_page = UserMainPage(browser, browser.current_url)
     user_main_page.input_depature_airport(departure_airport)
 
-@when(parsers.cfparse('I input "{destination_airport}" to To Airport Form'), converters=CONVERTERS)
+
+@when(parsers.cfparse('I input {destination_airport} to To Airport Form'))
 def input_destination_location(browser, destination_airport):
     user_main_page = UserMainPage(browser, browser.current_url)
     user_main_page.input_destination_airport(destination_airport)
 
-@when(parsers.cfparse('I choose "{depart_date}" at Depart Form'), converters=CONVERTERS)
+
+@when(parsers.cfparse('I choose {depart_date} at Depart Form'))
 def input_depart_date(browser, depart_date):
     user_main_page = UserMainPage(browser, browser.current_url)
     user_main_page.input_depart_date(depart_date)
 
-@when(parsers.cfparse('I choose "{return_date}" at Return Form'), converters=CONVERTERS)
+
+@when(parsers.cfparse('I choose {return_date} at Return Form'))
 def input_return_date(browser, return_date):
     user_main_page = UserMainPage(browser, browser.current_url)
     user_main_page.input_return_date(return_date)
     user_main_page.go_search()
-    time.sleep(10)
 
 
-@then(parsers.cfparse('I should see "flight_contents" from "{departure_airport}"'
-                      ' to "{destination_airport}" at "{depart_date}"'), converters=CONVERTERS)
-def should_be_flights_contents(browser, departure_airport, destination_airport, depart_date):
-    pass
-
-
+@then(parsers.cfparse('I should see flight cards from {departure_airport} to {destination_airport} at {depart_date} '
+                      'and {return_date}'))
+def be_flights_contents(browser, departure_airport, destination_airport, depart_date, return_date):
+    search_flight_page = SearchFlightsPage(browser, browser.current_url)
+    search_flight_page.should_be_correct_page_url()
+    search_flight_page.should_be_flight_card()
+    search_flight_page.should_be_correct_depart_name(departure_airport)
+    search_flight_page.should_be_correct_destination_name(destination_airport)
+    search_flight_page.should_be_correct_depart_date(depart_date)
+    search_flight_page.should_be_correct_return_date(return_date)
+    user_main_page = UserMainPage(browser, browser.current_url)
+    user_main_page.log_out()

@@ -14,6 +14,8 @@ class GuestMainPageLocators:
 
 class MainHeaderLocators:
     SIGN_IN_BUTTON = (By.XPATH, "//button[@aria-label='Log in']")
+    DROPDOWN_PROFILE = (By.XPATH, "//logged-in")
+    LOG_OUT_BUTTON = (By.XPATH, "//ry-log-out-button//button")
 
 
 class UserMainPageLocators:
@@ -23,11 +25,37 @@ class UserMainPageLocators:
     FRAME_DATEPICKER = (By.XPATH, "//iframe[@id='_hjRemoteVarsFrame']")
     SEARCH_BUTTON = (By.XPATH, "//button[@data-ref='flight-search-widget__cta']")
 
+class SearchFlightsPageLocators:
+    URL_IDENTIFIER = ("trip/flights/select")
+    FLIGHT_CARD = (By.XPATH, "//flight-card")
+    FLIGHT_DETAILS = (By.XPATH, "//flights-trip-details/div")
 
+    @staticmethod
+    def __set_depart_aiport(departure_airport):
+        return departure_airport
 
+    @staticmethod
+    def __set_return_airport(destination_airport):
+        return destination_airport
+
+    @staticmethod
+    def get_departure_header(departure_airport):
+        depart = SearchFlightsPageLocators.__set_depart_aiport(departure_airport)
+        DEPARTURE_LOCATION_HEADER = (By.XPATH,
+            f"//h4[@class='ng-tns-c55-3 ng-star-inserted' and contains(text(),'{depart}')]")
+        return DEPARTURE_LOCATION_HEADER
+
+    @staticmethod
+    def get_destination_header(destination_airport):
+        destination = SearchFlightsPageLocators.__set_depart_aiport(destination_airport)
+        DESTINATION_LOCATION_HEADER = (By.XPATH,
+            f"//h4[@class='ng-tns-c55-3 ng-star-inserted' and contains(text(),'{destination}')]")
+        return DESTINATION_LOCATION_HEADER
 
 
 class DatePickerLocators():
+    RETURN_FORM = (By.XPATH, "//fsw-input-button[@uniqueid='dates-to']")
+
     @staticmethod
     def __set_month(date):
         month = date.split()[1]
@@ -41,7 +69,7 @@ class DatePickerLocators():
     @staticmethod
     def get_month_button(date):
         month = DatePickerLocators.__set_month(date)
-        MONTH_BUTTON = (By.XPATH, f"//div[contains(text(), '{month}')]")
+        MONTH_BUTTON = (By.XPATH, f"//div[@class='m-toggle__scrollable']//div[contains(text(), '{month}')]")
         return MONTH_BUTTON
 
     @staticmethod

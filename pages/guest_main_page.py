@@ -5,23 +5,18 @@ from .locators.locators import GuestMainPageLocators
 from .locators.locators import MainHeaderLocators
 from utils.credentials import Credentials
 
+
 class GuestMainPage(BrowserHelper, BasePage):
     @allure.step("Accept cookies")
     def accept_cookies(self):
         """
         Method accepts cookies.
         """
-        accept_button = self.find_visible_element(*GuestMainPageLocators.ACCEPT_COOKIES_BUTTON)
-        accept_button.click()
-
-
-    # @allure.step("Verification of link to login page")
-    # def should_be_login_link(self):
-    #     """
-    #     The method checks for the presence of a link to go to the login page
-    #     """
-    #     assert self.is_element_present(*BasePageLocators.LOGIN_LINK), \
-    #         "Login link is not presented"
+        try:
+            accept_button = self.find_clickable_element(*GuestMainPageLocators.ACCEPT_COOKIES_BUTTON, timeout=1)
+            accept_button.click()
+        except:
+            pass
 
     @allure.step("Signing in")
     def go_to_sign_in(self):

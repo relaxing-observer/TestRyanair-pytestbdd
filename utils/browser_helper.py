@@ -59,10 +59,8 @@ class BrowserHelper(BasePage):
             return True
         return False
 
-
-
     @allure.step(f"Waiting for element by '{1}', '{2}' become visible during {3} seconds")
-    def find_visible_element(self, how, what, timeout=5):
+    def find_visible_element(self, how, what, timeout=4):
         """
         The method wait for the element, when it becomes visible. How: how to search (css, id, xpath, etc.)
         What: Selector string.
@@ -72,8 +70,17 @@ class BrowserHelper(BasePage):
             expected_conditions.visibility_of_element_located((how, what)))
         return required_element
 
+    @allure.step(f"Waiting for URL when phrase appeared during {3} seconds")
+    def wait_phrase_in_url(self, phrase, timeout=3):
+        """
+        The method wait for the element, when it becomes visible. How: how to search (css, id, xpath, etc.)
+        What: Selector string.
+        """
+        # logger.info(f"Waiting for correct URL by become required for {3} seconds")
+        return WebDriverWait(self.browser, timeout).until(expected_conditions.url_contains(phrase))
+
     @allure.step(f"Waiting for element by '{1}', '{2}' become visible during {3} seconds")
-    def find_clickable_element(self, how, what, timeout=5):
+    def find_clickable_element(self, how, what, timeout=3):
         """
         The method wait for the element, when it becomes clickable. How: how to search (css, id, xpath, etc.)
         What: Selector string.
