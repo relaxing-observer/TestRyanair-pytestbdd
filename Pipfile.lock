@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "39a6335b2e164ed172af9e4bcab47f9d8f2c3ed57c7b84ddbd522ffc55ad00ac"
+            "sha256": "08cd221603509b3b44eed988458839a47809052ba108f6009341a3f7e8a22d71"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -204,6 +204,14 @@
                 "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"
             ],
             "version": "==1.1.1"
+        },
+        "loguru": {
+            "hashes": [
+                "sha256:b28e72ac7a98be3d28ad28570299a393dfcd32e5e3f6a353dec94675767b6319",
+                "sha256:f8087ac396b5ee5f67c963b495d615ebbceac2796379599820e324419d53667c"
+            ],
+            "index": "pypi",
+            "version": "==0.5.3"
         },
         "mako": {
             "hashes": [
@@ -435,9 +443,7 @@
             "version": "==0.9.2"
         },
         "urllib3": {
-            "extras": [
-                "secure"
-            ],
+            "extras": [],
             "hashes": [
                 "sha256:4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece",
                 "sha256:c4fdf4019605b6e5423637e01bc9fe4daef873709a7973e195ceba0a62bbc844"
@@ -452,6 +458,14 @@
             ],
             "index": "pypi",
             "version": "==3.5.2"
+        },
+        "win32-setctime": {
+            "hashes": [
+                "sha256:2b72b798fdc1d909fb3cc0d25e0be52a42f4848857e3588dd3947c6a18b42609",
+                "sha256:7964234073ad9bc7a689ef2ebe6ce931976b644fe73fd50cf7729c996b7d8385"
+            ],
+            "markers": "sys_platform == 'win32'",
+            "version": "==1.0.4"
         },
         "wsproto": {
             "hashes": [

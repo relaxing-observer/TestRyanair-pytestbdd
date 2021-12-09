@@ -58,4 +58,4 @@ def should_be_flights(browser, departure_airport, destination_airport, depart_da
     search_flight_page.should_be_correct_depart_date(depart_date)
     search_flight_page.should_be_correct_return_date(return_date)
     user_main_page = UserMainPage(browser, browser.current_url)
-    user_main_page.log_out()
+    user_main_page.log_out_from_fligths()

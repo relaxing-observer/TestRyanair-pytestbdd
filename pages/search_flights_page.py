@@ -11,8 +11,8 @@ class SearchFlightsPage(BrowserHelper, BasePage):
 
     @allure.step("Should be flight item")
     def should_be_flight_card(self):
-        flight_cards = self.browser.find_elements(*SearchFlightsPageLocators.FLIGHT_CARD)
-        assert len(flight_cards) > 1, "There are no flights for return way or no any flights"
+        flight_card = self.find_visible_element(*SearchFlightsPageLocators.FLIGHT_CARD)
+        assert flight_card, "There are no flights cards for any destinations"
 
     @allure.step("Should be correct depart name airport")
     def should_be_correct_depart_name(self, scenario_airport):

@@ -1,13 +1,10 @@
+import logging
 import os
 
 import allure
 import pytest
-
-from selenium.webdriver.chrome.options import Options
-import pytest
-from utils.links import Links
-from pytest_bdd import given, parsers
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -35,8 +32,8 @@ def browser(request):
     options.add_argument("start-maximized")
     options.add_experimental_option(
         'prefs',{'intl.accept_languages': user_language})
-
-    browser = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    browser = webdriver.Chrome(ChromeDriverManager(log_level=logging.ERROR).install(), options=options)
     yield browser
     browser.quit()
 

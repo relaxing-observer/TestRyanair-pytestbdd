@@ -6,16 +6,10 @@ class BasePageLocators:
 
 class GuestMainPageLocators:
     ACCEPT_COOKIES_BUTTON = (By.XPATH,
-                             "//div[@id='cookie-popup-with-overlay']//button[@class='cookie-popup-with-overlay__button']")
+        "//div[@id='cookie-popup-with-overlay']//button[@class='cookie-popup-with-overlay__button']")
     EMAIL_FORM = (By.XPATH, "//input[@placeholder='email@email.com']")
     PASSWORD_FORM = (By.XPATH, "//input[@placeholder='Password']")
     CONFIRMATION_LOG_IN_BUTTON = (By.XPATH, "//form[@data-ref='login_modal']//button[@type='submit']")
-
-
-class MainHeaderLocators:
-    SIGN_IN_BUTTON = (By.XPATH, "//button[@aria-label='Log in']")
-    DROPDOWN_PROFILE = (By.XPATH, "//logged-in")
-    LOG_OUT_BUTTON = (By.XPATH, "//ry-log-out-button//button")
 
 
 class UserMainPageLocators:
@@ -30,6 +24,10 @@ class UserMainPageLocators:
     CHECK_IN_FORM = (By.XPATH, "//hp-input-button[@uniqueid='check-in']")
     CHECK_OUT_FORM = (By.XPATH, "//hp-input-button[@uniqueid='check-out']")
     SEARCH_HOTEL_BUTTON = (By.XPATH, "//button[@data-ref='rooms-search-widget__cta']")
+    SIGN_IN_BUTTON = (By.XPATH, "//button[@aria-label='Log in']")
+    DROPDOWN_PROFILE = (By.XPATH, "//logged-in")
+    LOG_OUT_BUTTON = (By.XPATH, "//ry-log-out-button//button")
+
 
 class SearchFlightsPageLocators:
     URL_IDENTIFIER = ("trip/flights/select")
@@ -63,6 +61,10 @@ class SearchHotelsPageLocators:
     ACCOMODATION_CARD = (By.XPATH, "//rooms-accommodation-card[@class]")
     ACCEPT_COOKIES_BUTTON = (By.XPATH,
                              "//div[@id='cookie-popup-with-overlay']//button[@class='cookie-popup-with-overlay__button']")
+    DROPDOWN_PROFILE = (By.XPATH, "//icon[@class='user-controls__chevron-icon']")
+    LOG_OUT = (By.XPATH, "//a[@data-ref='user-controls-logout-link']")
+    ACTUAL_DESTINATION_SUMMARY = (By.XPATH, "//span[@class='search-summary__destination']")
+    ACTUAL_DATES_SUMMARY = (By.XPATH, "//span[@class='search-summary__dates']")
 
 class DatePickerLocators():
     RETURN_FORM = (By.XPATH, "//fsw-input-button[@uniqueid='dates-to']")

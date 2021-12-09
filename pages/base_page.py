@@ -7,9 +7,8 @@ class BasePage:
     """
     def __init__(self, browser, url, timeout=2):
         """
-        :param browser: driver instance
-        :param url: correct URL for tests
-        :param timeout: Time (seconds) for implicitly waiting of any
+        browser: driver instance. url: correct URL for tests
+        timeout: Time (seconds) for implicitly waiting of any
         find_element methods. Default value - 2 seconds.
         """
         self.browser = browser

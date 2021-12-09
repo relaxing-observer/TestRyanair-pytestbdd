@@ -3,7 +3,6 @@ import allure
 from pages.base_page import BasePage
 from utils.browser_helper import BrowserHelper
 from .locators.locators import DatePickerLocators
-from .locators.locators import MainHeaderLocators
 from .locators.locators import UserMainPageLocators
 
 
@@ -13,10 +12,7 @@ class UserMainPage(BrowserHelper, BasePage):
         """
         Method inputs name of departure airport in form
         """
-        departure_form = self.find_clickable_element(*UserMainPageLocators.INPUT_DEPARTURE_FORM)
-        departure_form.click()
-        departure_form.clear()
-        departure_form.send_keys(name_airport)
+        self.send_keys(*UserMainPageLocators.INPUT_DEPARTURE_FORM, name_airport)
         confirmation_button = self.find_visible_element(*UserMainPageLocators.CONFIRMATION_AIRPORT)
         confirmation_button.click()
 
@@ -25,10 +21,7 @@ class UserMainPage(BrowserHelper, BasePage):
         """
         Method inputs name of destination airport in form
         """
-        destination_form = self.find_clickable_element(*UserMainPageLocators.INPUT_DESTINATION_FORM)
-        destination_form.click()
-        destination_form.clear()
-        destination_form.send_keys(airport_name)
+        self.send_keys(*UserMainPageLocators.INPUT_DESTINATION_FORM, airport_name)
         confirmation_button = self.find_visible_element(*UserMainPageLocators.CONFIRMATION_AIRPORT)
         confirmation_button.click()
 
@@ -37,9 +30,7 @@ class UserMainPage(BrowserHelper, BasePage):
         """
         Method inputs name of destination location
         """
-        destination_form = self.find_visible_element(*UserMainPageLocators.DESTINATION_HOTEL_FORM)
-        destination_form.click()
-        destination_form.send_keys(hotel_name)
+        self.send_keys(*UserMainPageLocators.DESTINATION_HOTEL_FORM, hotel_name)
         confirmation_button = self.find_visible_element(*UserMainPageLocators.CONFIRMATION_HOTEL)
         confirmation_button.click()
 
@@ -115,11 +106,11 @@ class UserMainPage(BrowserHelper, BasePage):
         hotels_tab.click()
 
     @allure.step("Log out")
-    def log_out(self):
+    def log_out_from_fligths(self):
         """
         Method logs out form service
         """
-        dropdown_profile = self.find_visible_element(*MainHeaderLocators.DROPDOWN_PROFILE)
+        dropdown_profile = self.find_visible_element(*UserMainPageLocators.DROPDOWN_PROFILE)
         dropdown_profile.click()
-        log_out_button = self.find_visible_element(*MainHeaderLocators.LOG_OUT_BUTTON)
+        log_out_button = self.find_visible_element(*UserMainPageLocators.LOG_OUT_BUTTON)
         log_out_button.click()
