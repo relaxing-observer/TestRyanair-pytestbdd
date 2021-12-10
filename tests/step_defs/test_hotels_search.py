@@ -30,7 +30,6 @@ def select_hotels_tab(browser):
 @when(parsers.cfparse('I input {location} to Destination Form'))
 def input_destination_location(browser, location):
     user_main_page = UserMainPage(browser, browser.current_url)
-    user_main_page.go_to_hotels()
     user_main_page.input_destination_hotel_location(location)
 
 @when(parsers.cfparse('I choose {check_in_date} at Check-In Form'))

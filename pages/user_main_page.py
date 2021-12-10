@@ -7,6 +7,23 @@ from .locators.locators import UserMainPageLocators
 
 
 class UserMainPage(BrowserHelper, BasePage):
+    @allure.step("Go to cars")
+    def go_to_cars(self):
+        """
+        Method clicks on cars tab
+        """
+        cars_tab = self.find_visible_element(*UserMainPageLocators.CARS_TAB)
+        cars_tab.click()
+
+
+    @allure.step("Go to hotels tab")
+    def go_to_hotels(self):
+        """
+        Method clicks on Hotels tab
+        """
+        hotels_tab = self.find_visible_element(*UserMainPageLocators.HOTELS_TAB)
+        hotels_tab.click()
+
     @allure.step("Input departure airport")
     def input_depature_airport(self, name_airport):
         """
@@ -34,6 +51,16 @@ class UserMainPage(BrowserHelper, BasePage):
         confirmation_button = self.find_visible_element(*UserMainPageLocators.CONFIRMATION_HOTEL)
         confirmation_button.click()
 
+
+    @allure.step("Input destination location for rent car")
+    def input_car_location(self, location_name):
+        """
+        Method inputs name of location for rent car
+        """
+        self.send_keys(*UserMainPageLocators.CAR_LOCATION, location_name)
+        confirmation_button = self.find_visible_element(*UserMainPageLocators.CONFIRMATION_CAR_LOCATION)
+        confirmation_button.click()
+
     @allure.step
     def input_check_in_date(self, check_in_date):
         """
@@ -58,6 +85,39 @@ class UserMainPage(BrowserHelper, BasePage):
         check_out_day = self.find_visible_element(*DatePickerLocators.get_day_button(check_out_date))
         check_out_day.click()
 
+    @allure.step
+    def input_pickup_date(self, pickup_date):
+        """
+        Method inputs date of pick_up
+        """
+        pick_up_form = self.find_visible_element(*UserMainPageLocators.PICK_UP_FORM)
+        pick_up_form.click()
+        pick_up_month = self.find_visible_element(*DatePickerLocators.get_month_button(pickup_date))
+        pick_up_month.click()
+        pick_up_day = self.find_visible_element(*DatePickerLocators.get_day_button(pickup_date))
+        pick_up_day.click()
+
+    @allure.step
+    def input_dropoff_date(self, dropoff_date):
+        """
+        Method inputs date of drop off
+        """
+        drop_off_form = self.find_visible_element(*UserMainPageLocators.DROP_OFF_FORM)
+        drop_off_form.click()
+        drop_off_month = self.find_visible_element(*DatePickerLocators.get_month_button(dropoff_date))
+        drop_off_month.click()
+        drop_off_day = self.find_visible_element(*DatePickerLocators.get_day_button(dropoff_date))
+        drop_off_day.click()
+
+    @allure.step
+    def input_pickup_date(self, pickup_time):
+        """
+        Method inputs time of pick_up
+        """
+        pickup_time = self.find_visible_element(*UserMainPageLocators.PICK_UP_TIME_FORM)
+
+
+
     @allure.step("Input depart date")
     def input_depart_date(self, depart_date):
         """
@@ -67,6 +127,7 @@ class UserMainPage(BrowserHelper, BasePage):
         depart_month.click()
         depart_day = self.find_visible_element(*DatePickerLocators.get_day_button(depart_date))
         depart_day.click()
+
 
     @allure.step("Input return date")
     def input_return_date(self, return_date):
@@ -79,7 +140,6 @@ class UserMainPage(BrowserHelper, BasePage):
         return_month.click()
         return_day = self.find_visible_element(*DatePickerLocators.get_day_button(return_date))
         return_day.click()
-
 
     @allure.step("Go searching flights")
     def go_flight_search(self):
@@ -96,14 +156,6 @@ class UserMainPage(BrowserHelper, BasePage):
         """
         search_button = self.find_visible_element(*UserMainPageLocators.SEARCH_HOTEL_BUTTON)
         search_button.click()
-
-    @allure.step("Go to hotels tab")
-    def go_to_hotels(self):
-        """
-        Method clicks on Hotels tab
-        """
-        hotels_tab = self.find_visible_element(*UserMainPageLocators.HOTELS_TAB)
-        hotels_tab.click()
 
     @allure.step("Log out")
     def log_out_from_fligths(self):

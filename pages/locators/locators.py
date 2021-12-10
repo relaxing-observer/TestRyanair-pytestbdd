@@ -11,18 +11,33 @@ class GuestMainPageLocators:
 class UserMainPageLocators:
     INPUT_DEPARTURE_FORM = (By.XPATH, "//*[@id='input-button__departure']")
     INPUT_DESTINATION_FORM = (By.XPATH, "//input[@id='input-button__destination']")
-    CONFIRMATION_AIRPORT = (By.XPATH, "(//span[@data-ref='airport-item__name'])[last()]")
-    FRAME_DATEPICKER = (By.XPATH, "//iframe[@id='_hjRemoteVarsFrame']")
-    SEARCH_FLIGHT_BUTTON = (By.XPATH, "//button[@data-ref='flight-search-widget__cta']")
-    HOTELS_TAB = (By.XPATH, "//hp-search-widget-tab[@iconid='glyphs/hotels']")
     DESTINATION_HOTEL_FORM = (By.XPATH, "//*[@id='input-button__locations-or-properties']")
-    CONFIRMATION_HOTEL = (By.XPATH, "//icon[@iconid='glyphs/destination-pin']")
+    CAR_LOCATION = (By.XPATH, "//*[@id='input-button__pick-up-location']")
+
+    FRAME_DATEPICKER = (By.XPATH, "//iframe[@id='_hjRemoteVarsFrame']")
+
+    SEARCH_FLIGHT_BUTTON = (By.XPATH, "//button[@data-ref='flight-search-widget__cta']")
+    SEARCH_HOTEL_BUTTON = (By.XPATH, "//button[@data-ref='rooms-search-widget__cta']")
+    SEARCH_CARS_BUTTON = (By.XPATH, "//button[@data-ref='car-hire-widget__cta']")
+
+    HOTELS_TAB = (By.XPATH, "//hp-search-widget-tab[@iconid='glyphs/hotels']")
+    CARS_TAB = (By.XPATH, "//hp-search-widget-tab[@iconid='glyphs/cars']")
+
     CHECK_IN_FORM = (By.XPATH, "//hp-input-button[@uniqueid='check-in']")
     CHECK_OUT_FORM = (By.XPATH, "//hp-input-button[@uniqueid='check-out']")
-    SEARCH_HOTEL_BUTTON = (By.XPATH, "//button[@data-ref='rooms-search-widget__cta']")
+    PICK_UP_FORM = (By.XPATH, "//hp-input-button[@uniqueid='pick-up-date']")
+    PICK_UP_TIME_FORM = (By.XPATH, "//hp-input-button[@uniqueid='pick-up-time']")
+    DROP_OFF_FORM = (By.XPATH, "//hp-input-button[@uniqueid='drop-off-date']")
+    DROP_OFF_TIME_FORM = (By.XPATH, "//hp-input-button[@uniqueid='drop-off-time']")
+
+    CONFIRMATION_AIRPORT = (By.XPATH, "(//span[@data-ref='airport-item__name'])[last()]")
+    CONFIRMATION_HOTEL = (By.XPATH, "//icon[@iconid='glyphs/destination-pin']")
+    CONFIRMATION_CAR_LOCATION = (By.XPATH, "//hp-car-hire-location/div[1]")
+
     SIGN_IN_BUTTON = (By.XPATH, "//button[@aria-label='Log in']")
     DROPDOWN_PROFILE = (By.XPATH, "//logged-in")
     LOG_OUT_BUTTON = (By.XPATH, "//ry-log-out-button//button")
+
 
 
 class SearchFlightsPageLocators:
@@ -88,6 +103,17 @@ class DatePickerLocators():
         f"//calendar[@class='datepicker__calendar datepicker__calendar--left']//"
         f"div[@data-value='{day}' and @data-type='day']")
         return DEPART_DAY_BUTTON
+
+    @staticmethod
+    def __set_pick_time(time):
+        return time
+
+    @staticmethod
+    def get_pick_time_button(time):
+        time = DatePickerLocators.__set_pick_time(time)
+        PICK_TIME_BUTTON = (By.XPATH, f"//hp-time-selector-item[@data-ref='time-selector-item__button']"
+                                      f"/div[contains(text(),'{time}')]")
+        return PICK_TIME_BUTTON
 
 
 
