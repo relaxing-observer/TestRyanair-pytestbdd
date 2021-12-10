@@ -20,9 +20,9 @@ Make sure you have python3.10 installed on your machine by typing in cmd ``pytho
 
 ``$ git clone https://github.com/EgorSolenok/TestRyanair.git``
 
-2) You have to install allure command line and add the allure folder installation into system environment variable: https://docs.qameta.io/allure/#_installing_a_commandline
+2) Make sure you have  allure command line  by typing in cmd ``allure --version``. If not - you have to install allure command line and add the allure folder installation into system environment variable: https://docs.qameta.io/allure/#_installing_a_commandline
 
-3) You have to install pipenv for creation virtual environment and installation packages: https://pipenv.pypa.io/en/latest/  
+3) Make sure you have pipenv  by typing in cmd ``pipenv --version``. If not - you have to install pipenv for creation virtual environment and installation packages: https://pipenv.pypa.io/en/latest/  
 
 ``$ pip install --user pipenv``
 
