@@ -1,9 +1,5 @@
 from selenium.webdriver.common.by import By
 
-class BasePageLocators:
-    pass
-
-
 class GuestMainPageLocators:
     ACCEPT_COOKIES_BUTTON = (By.XPATH,
         "//div[@id='cookie-popup-with-overlay']//button[@class='cookie-popup-with-overlay__button']")

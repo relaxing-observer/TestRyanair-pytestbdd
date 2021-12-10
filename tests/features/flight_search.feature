@@ -4,6 +4,7 @@ Feature: Ryanair flight search
 Background:
   Given I am on main page
 
+  @flight_search
   Scenario Outline: Verify user is finding flights in specified dates
 
     When I input <departure airport> to From Airport Form

@@ -1,5 +1,3 @@
-import time
-
 import allure
 from pages.base_page import BasePage
 from utils.browser_helper import BrowserHelper

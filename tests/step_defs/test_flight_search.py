@@ -2,15 +2,12 @@
 This module contains step definitions for flights search feature.
 It uses Selenium WebDriver for browser interactions
 """
-import pytest
 from pytest_bdd import scenarios, given, when, then, parsers
 
 from pages.guest_main_page import GuestMainPage
 from pages.search_flights_page import SearchFlightsPage
 from pages.user_main_page import UserMainPage
 from utils.links import Links
-
-
 
 
 scenarios('../features/flight_search.feature')

@@ -4,7 +4,8 @@ Feature: Ryanair hotels search
 Background:
   Given I am on main page
 
-  Scenario Outline: Verify user is finding flights in specified dates
+  @hotels_search
+  Scenario Outline: Verify user is finding hotels in specified dates
     When I choose hotels tab
     And I input <location> to Destination Form
     And I choose <check-in date> at Check-In Form

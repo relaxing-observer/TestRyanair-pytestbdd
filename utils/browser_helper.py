@@ -18,8 +18,7 @@ class BrowserHelper(BasePage):
     def is_element_present(self, how, what):
         """
         The method that catches the exceptions. How: how to search (css, id, xpath, etc.)
-        What: Selector string
-        True - if element is on the page, False - if not.
+        Selector string. True - if element is on the page, False - if not.
         """
         logger.info(f"Verification of the presence of the element '{how}' and '{what}'")
         try:
@@ -111,7 +110,7 @@ class BrowserHelper(BasePage):
         time.sleep(.05)
         apply_style(original_style)
 
-    @allure.step("Send values - '{3}' in input of element '{1}' '{2}' form after clearing form")
+    @allure.step("Send values to the form of element '{1}' '{2}' after clearing")
     def send_keys(self, how, what, value, timeout=2, clear_first=True, click_first=True):
         required_element = WebDriverWait(self.browser, timeout).until(
             expected_conditions.element_to_be_clickable((how, what)))
@@ -122,5 +121,5 @@ class BrowserHelper(BasePage):
         if clear_first:
             logger.info(f"Clearing form of {how} {what}")
             required_element.clear()
-        logger.info(f"Send values {value} to {how} {what}")
+        logger.info(f"Send values to {how} {what}")
         required_element.send_keys(value)
