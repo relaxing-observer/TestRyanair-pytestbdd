@@ -1,9 +1,10 @@
+import time
+
 import allure
 from pages.base_page import BasePage
 from utils.browser_helper import BrowserHelper
 from .locators.locators import GuestMainPageLocators
 from .locators.locators import UserMainPageLocators
-from utils.credentials import Credentials
 
 
 class GuestMainPage(BrowserHelper, BasePage):
@@ -27,11 +28,11 @@ class GuestMainPage(BrowserHelper, BasePage):
         signing_in_button.click()
 
     @allure.step("Signing in")
-    def sign_in_user(self):
+    def sign_in_user(self, username, password):
         """
         Method goes to signing in from main header of page.
         """
-        self.send_keys(*GuestMainPageLocators.EMAIL_FORM, Credentials.USERNAME)
-        self.send_keys(*GuestMainPageLocators.PASSWORD_FORM, Credentials.PASSWORD)
+        self.send_keys(*GuestMainPageLocators.EMAIL_FORM, username)
+        self.send_keys(*GuestMainPageLocators.PASSWORD_FORM, password)
         confirm_button = self.find_visible_element(*GuestMainPageLocators.CONFIRMATION_LOG_IN_BUTTON)
         confirm_button.click()

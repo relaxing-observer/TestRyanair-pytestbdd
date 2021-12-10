@@ -13,12 +13,12 @@ scenarios('../features/hotels_search.feature')
 
 
 @given('I am on main page', target_fixture='user_on_main_page')
-def user_on_main_page(browser):
+def user_on_main_page(browser, user, password):
     guest_main_page = GuestMainPage(browser, Links.MAIN_PAGE_LINK, timeout=0)
     guest_main_page.open()
     guest_main_page.accept_cookies()
     guest_main_page.go_to_sign_in()
-    guest_main_page.sign_in_user()
+    guest_main_page.sign_in_user(user, password)
 
 
 @when('I choose hotels tab')

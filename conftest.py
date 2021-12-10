@@ -9,15 +9,20 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 def pytest_addoption(parser):
-    '''
-    Possibility of parameterization of the environment using different interface languages.
-    To change the language, you must explicitly specify on the command line:
-     <- language = en> or another language in standard abbreviation.
-    '''
     parser.addoption('--language',
                      action='store', 
                      default='en',
                      help="Choose language: ru, en, fr, it, es ... (etc.)"
+                    )
+    parser.addoption('--user',
+                     action='store',
+                     default='None',
+                     help="Set a username"
+                    )
+    parser.addoption('--password',
+                     action='store',
+                     default='None',
+                     help="Set a password"
                     )
 
 
@@ -36,6 +41,16 @@ def browser(request):
     browser = webdriver.Chrome(ChromeDriverManager(log_level=logging.ERROR).install(), options=options)
     yield browser
     browser.quit()
+
+@pytest.fixture()
+def user(request):
+    user = request.config.getoption("user")
+    return user
+
+@pytest.fixture()
+def password(request):
+    password = request.config.getoption("password")
+    return password
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)

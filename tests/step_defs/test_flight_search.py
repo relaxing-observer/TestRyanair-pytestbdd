@@ -2,7 +2,7 @@
 This module contains step definitions for flights search feature.
 It uses Selenium WebDriver for browser interactions
 """
-
+import pytest
 from pytest_bdd import scenarios, given, when, then, parsers
 
 from pages.guest_main_page import GuestMainPage
@@ -10,16 +10,19 @@ from pages.search_flights_page import SearchFlightsPage
 from pages.user_main_page import UserMainPage
 from utils.links import Links
 
+
+
+
 scenarios('../features/flight_search.feature')
 
 
 @given('I am on main page', target_fixture='user_on_main_page')
-def user_on_main_page(browser):
+def user_on_main_page(browser, user, password):
     guest_main_page = GuestMainPage(browser, Links.MAIN_PAGE_LINK, timeout=0)
     guest_main_page.open()
     guest_main_page.accept_cookies()
     guest_main_page.go_to_sign_in()
-    guest_main_page.sign_in_user()
+    guest_main_page.sign_in_user(user, password)
 
 
 @when(parsers.cfparse('I input {departure_airport} to From Airport Form'))

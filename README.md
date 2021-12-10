@@ -15,7 +15,7 @@ To set up this project on your local machine:
 
 **Description**
 
-Test Automation Framework for web automation of "https://github.com" using Selenium and Python using BDD testing approach with the below features:
+Test Automation Framework for web automation of "www.ryanair.com" using Selenium and Python using BDD testing approach with the below features:
 
 * Framework is based on Page Object Model. 
 * Reporting using Allure report.
