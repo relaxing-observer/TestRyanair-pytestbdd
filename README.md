@@ -39,13 +39,11 @@ Make sure you have python3.10 installed on your machine by typing in cmd ``pytho
 
 To run scenario steps in feature "Verify user is finding flights in specified dates" and create report:
 
-`` pipenv run python -m pytest -k -v "flight_search" --tb=line --user=<USER@EMAIL.COM> --password=<PASSWORD> 
- --alluredir=report_data``
+`` pipenv run python -m pytest -k -v "flight_search" --tb=line --user=<USER@EMAIL.COM> --password=<PASSWORD> --alluredir=report_data``
 
 To run scenario steps in feature "Verify user is finding hotels in specified dates" and create report:
 
-`` pipenv run python -m pytest -k "hotels_search" --user=<USER@EMAIL.COM> --password=<PASSWORD> -v --tb=line
- --alluredir=report_data``
+`` pipenv run python -m pytest -k -v "hotels_search" --tb=line --user=<USER@EMAIL.COM> --password=<PASSWORD> --alluredir=report_data``
 
 To change the data using in steps you should open files .\tests\features\hotels_search.feature and .\tests\features\hotels_search.feature.
 You can change values in the table accordingly to the web-service  (should be correct names) and put your own locations or dates in it, or add lines with new values.
