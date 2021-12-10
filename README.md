@@ -39,7 +39,7 @@ Make sure you have python3.10 installed on your machine by typing in cmd ``pytho
 
 To run scenario steps in feature "Verify user is finding flights in specified dates" and create report:
 
-`` pipenv run python -m pytest -k "flight_search" --user=<USER@EMAIL.COM> --password=<PASSWORD> -v --tb=line
+`` pipenv run python -m pytest -k -v "flight_search" --tb=line --user=<USER@EMAIL.COM> --password=<PASSWORD> 
  --alluredir=report_data``
 
 To run scenario steps in feature "Verify user is finding hotels in specified dates" and create report:
