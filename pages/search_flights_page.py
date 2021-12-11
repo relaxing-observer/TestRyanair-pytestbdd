@@ -5,6 +5,11 @@ from .locators.locators import SearchFlightsPageLocators
 
 
 class SearchFlightsPage(BrowserHelper, BasePage):
+    @allure.step("Go to main page")
+    def go_to_main_page(self):
+        home_logo = self.find_visible_element(*SearchFlightsPageLocators.MAIN_LOGO)
+        home_logo.click()
+
     @allure.step("Should be correct URL of page")
     def should_be_correct_page_url(self):
         assert self.wait_phrase_in_url(SearchFlightsPageLocators.URL_IDENTIFIER), "Probably you don't chose flight"

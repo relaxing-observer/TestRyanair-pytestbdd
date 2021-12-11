@@ -13,6 +13,13 @@ class SearchHotelsPage(BrowserHelper, BasePage):
         except:
             pass
 
+    @allure.step("Log out from hotels page")
+    def log_out(self):
+        dropdown_profile = self.find_visible_element(*SearchHotelsPageLocators.DROPDOWN_PROFILE)
+        dropdown_profile.click()
+        log_out_button = self.find_visible_element(*SearchHotelsPageLocators.LOG_OUT)
+        log_out_button.click()
+
     @allure.step("Should be correct URL of page")
     def should_be_correct_page_url(self):
         is_url_correct = self.wait_phrase_in_url(SearchHotelsPageLocators.URL_IDENTIFIER)

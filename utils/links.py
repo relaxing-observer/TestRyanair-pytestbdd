@@ -2,4 +2,9 @@ class Links:
     """
     Links of pages for required tests.
     """
-    MAIN_PAGE_LINK = 'https://www.ryanair.com/'
+    __links_storage={
+        'main':'https://www.ryanair.com/',
+    }
+    @staticmethod
+    def get_page_link(name):
+        return Links.__links_storage[name]

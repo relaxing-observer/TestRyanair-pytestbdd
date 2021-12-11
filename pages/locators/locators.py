@@ -1,14 +1,12 @@
 from selenium.webdriver.common.by import By
 
-class GuestMainPageLocators:
+class UserMainPageLocators:
     ACCEPT_COOKIES_BUTTON = (By.XPATH,
         "//div[@id='cookie-popup-with-overlay']//button[@class='cookie-popup-with-overlay__button']")
     EMAIL_FORM = (By.XPATH, "//input[@placeholder='email@email.com']")
     PASSWORD_FORM = (By.XPATH, "//input[@placeholder='Password']")
     CONFIRMATION_LOG_IN_BUTTON = (By.XPATH, "//form[@data-ref='login_modal']//button[@type='submit']")
 
-
-class UserMainPageLocators:
     INPUT_DEPARTURE_FORM = (By.XPATH, "//*[@id='input-button__departure']")
     INPUT_DESTINATION_FORM = (By.XPATH, "//input[@id='input-button__destination']")
     DESTINATION_HOTEL_FORM = (By.XPATH, "//*[@id='input-button__locations-or-properties']")
@@ -23,6 +21,11 @@ class UserMainPageLocators:
     HOTELS_TAB = (By.XPATH, "//hp-search-widget-tab[@iconid='glyphs/hotels']")
     CARS_TAB = (By.XPATH, "//hp-search-widget-tab[@iconid='glyphs/cars']")
 
+    @staticmethod
+    def get_search_tab(name):
+        SEARCH_TAB = (By.XPATH, f"//hp-search-widget-tab[@iconid='glyphs/{name}']")
+        return SEARCH_TAB
+
     CHECK_IN_FORM = (By.XPATH, "//hp-input-button[@uniqueid='check-in']")
     CHECK_OUT_FORM = (By.XPATH, "//hp-input-button[@uniqueid='check-out']")
     PICK_UP_FORM = (By.XPATH, "//hp-input-button[@uniqueid='pick-up-date']")
@@ -35,15 +38,23 @@ class UserMainPageLocators:
     CONFIRMATION_CAR_LOCATION = (By.XPATH, "//hp-car-hire-location/div[1]")
 
     SIGN_IN_BUTTON = (By.XPATH, "//button[@aria-label='Log in']")
-    DROPDOWN_PROFILE = (By.XPATH, "//logged-in")
-    LOG_OUT_BUTTON = (By.XPATH, "//ry-log-out-button//button")
 
+    ACTUAL_LOG_OUT_BUTTON = (By.XPATH, "//a[@data-ref='header-dropdown-user__logout']")
+    USER_MENU = (By.XPATH, "//button[@data-ref='header-menu-item__toggle-button']/hp-header-menu-user")
 
+class SearchCarsPageLocators:
+    ACCEPT_COOKIES_BUTTON = (By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
+    CAR_CARD = (By.XPATH, "//div[@data-coordinates]//div[@class='address_container']")
+    SEARCH_SUMMARY = (By.XPATH, "//table[@class='ab-SearchSummary']")
+    MAIN_LOGO = (By.XPATH, "//img[@class='rch-logo-image ']")
 
 class SearchFlightsPageLocators:
     URL_IDENTIFIER = ("trip/flights/select")
     FLIGHT_CARD = (By.XPATH, "//flight-card")
     FLIGHT_DETAILS = (By.XPATH, "//flights-trip-details/div")
+    DROPDOWN_PROFILE = (By.XPATH, "//logged-in")
+    LOG_OUT_BUTTON = (By.XPATH, "//ry-log-out-button//button")
+    MAIN_LOGO = (By.XPATH, "//icon[@class='ry-header__logo']")
 
     @staticmethod
     def __set_depart_aiport(departure_airport):
@@ -104,16 +115,15 @@ class DatePickerLocators():
         f"div[@data-value='{day}' and @data-type='day']")
         return DEPART_DAY_BUTTON
 
-    @staticmethod
-    def __set_pick_time(time):
-        return time
+    # @staticmethod
+    # def __set_pick_time(time):
+    #     return time
 
     @staticmethod
-    def get_pick_time_button(time):
-        time = DatePickerLocators.__set_pick_time(time)
-        PICK_TIME_BUTTON = (By.XPATH, f"//hp-time-selector-item[@data-ref='time-selector-item__button']"
+    def get_time_button(time):
+        TIME_BUTTON = (By.XPATH, f"//hp-time-selector-item[@data-ref='time-selector-item__button']"
                                       f"/div[contains(text(),'{time}')]")
-        return PICK_TIME_BUTTON
+        return TIME_BUTTON
 
 
 
