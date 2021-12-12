@@ -12,7 +12,7 @@ scenarios('../features/hotels_search.feature')
 
 @given(parsers.cfparse('I am on "{main}" page'), target_fixture='main_page')
 def main_page(browser, main, user, password):
-    main_page = PageConstructor.get_class(main)(browser, Links.get_page_link(main), timeout=0)
+    main_page = PageConstructor.get_class(main)(browser, Links.get_page_link(main))
     main_page.open()
     main_page.accept_cookies()
     main_page.sign_in_user(user, password)
@@ -27,25 +27,25 @@ def select_hotels_tab(browser, hotels, main):
 @when(parsers.cfparse('I input "{location}" to Destination Form on "{hotels}" tab'))
 def input_destination_location(browser, location, hotels):
     hotel_page = PageConstructor.get_class(hotels)(browser, browser.current_url)
-    hotel_page.input_destination_hotel_location(location)
+    hotel_page.input_location(location)
 
 @when(parsers.cfparse('I choose "{check_in_date}" at Check-In Form on "{hotels}" tab'))
 def input_check_in_date(browser, check_in_date, hotels):
     hotel_page = PageConstructor.get_class(hotels)(browser, browser.current_url)
-    hotel_page.input_check_in_date(check_in_date)
+    hotel_page.select_check_in_date(check_in_date)
 
 @when(parsers.cfparse('I choose "{check_out_date}" at Check-out Form on "{hotels}" tab'))
 def input_check_out_date(browser, check_out_date, hotels):
     hotel_page = PageConstructor.get_class(hotels)(browser, browser.current_url)
-    hotel_page.input_check_out_date(check_out_date)
+    hotel_page.select_check_out_date(check_out_date)
     hotel_page.go_search()
 
 @then(parsers.cfparse('I should see accommodation cards in "{location}" from "{check_in_date}" to "{check_out_date}" on "{search_hotels}" page'))
 def should_be_hotels(browser, location, check_in_date, check_out_date, search_hotels):
-    search_hotels_page = PageConstructor.get_class(search_hotels)(browser, browser.current_url, timeout=0)
+    search_hotels_page = PageConstructor.get_class(search_hotels)(browser, browser.current_url)
     search_hotels_page.accept_cookies()
     search_hotels_page.should_be_correct_page_url()
-    search_hotels_page.should_be_accomodation_card()
+    search_hotels_page.should_be_accommodation_card()
     search_hotels_page.should_be_correct_location_name(location)
     search_hotels_page.should_be_correct_dates(check_in_date, check_out_date)
     search_hotels_page.log_out()

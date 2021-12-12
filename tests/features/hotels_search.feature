@@ -16,5 +16,5 @@ Background:
       | location    | check-in date   | check-out date  |
       | Kotor       | 27 Apr 2022     | 5 May 2022      |
       | Venezia     | 14 May 2022     | 25 May 2022     |
-#      | Prague      | 13 Apr 2022     | 18 Apr 2022     |
-#      | Oslo        | 13 Apr 2022     | 18 Apr 2022     |
+      | Prague      | 13 Apr 2022     | 18 Apr 2022     |
+      | Oslo        | 13 Apr 2022     | 18 Apr 2022     |

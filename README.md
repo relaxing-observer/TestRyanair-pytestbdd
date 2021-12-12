@@ -6,7 +6,7 @@
 Test Automation Framework for web automation of "www.ryanair.com" using Selenium and Python using BDD testing approach with the below features:
 
 * Framework is based on Page Object Model. 
-* BDD approach (Pytest-BDD plugin) with Scenario Outline
+* BDD approach (Pytest-BDD plugin) with Scenarios Outline
 * Reporting using Allure report.
 * Logging to external file.
 
@@ -39,22 +39,27 @@ Make sure you have python3.10 installed on your machine by typing in cmd ``pytho
 
 To run scenario steps in feature "Verify user is finding flights in specified dates" and create report:
 
-`` pipenv run python -m pytest -k -v "flights_search" --tb=line --user=<USER@EMAIL.COM> --password=<PASSWORD> 
+`` pipenv run python -m pytest -k  "flights_search" -v --tb=line --user=<USER@EMAIL.COM> --password=<PASSWORD> 
  --alluredir=report_data``
 
 To run scenario steps in feature "Verify user is finding hotels in specified dates" and create report:
 
-`` pipenv run python -m pytest -k "hotels_search" --user=<USER@EMAIL.COM> --password=<PASSWORD> -v --tb=line
+`` pipenv run python -m pytest -k "hotels_search" -v --user=<USER@EMAIL.COM> --password=<PASSWORD> --tb=line
  --alluredir=report_data``
 
-To change the data using in steps you should open files .\tests\features\hotels_search.feature and .\tests\features\hotels_search.feature.
-You can change values in the table accordingly to the web-service  (should be correct names) and put your own locations or dates in it, or add lines with new values.
+To run scenario steps in feature "Verify user is finding cars in specified dates" and create report:
 
-To create **Allure report** and open it type in cmd being located in the folder path:
+`` pipenv run python -m pytest -k "cars_search" -v --user=<USER@EMAIL.COM> --password=<PASSWORD> --tb=line
+ --alluredir=report_data``
+
+To change values used in steps you should open files .\tests\features\hotels_search.feature, tests\features\hotels_search.feature, tests\features\cars_search.feature.
+You can change values in the table accordingly to the web-service  (should be correct names and dates) and put your own locations or dates in it, or add lines with new values.
+
+To create **Allure report** and open it - type in cmd being located in the folder path:
 
 ``allure serve report_data``
 
 **Logging**
 
-To read logs you should open file ``logging_data.log``
+To read logs you can see file ``logging_data.log``
 

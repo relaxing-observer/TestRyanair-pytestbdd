@@ -17,4 +17,4 @@ Background:
       | departure airport       | destination airport  | depart date | return date |
       | Berlin Brandenburg      | Rome Fiumicino       | 27 Apr 2022 | 5 May 2022  |
       | Rome Fiumicino          | Brussels Charleroi   | 14 May 2022 | 25 May 2022 |
-#      | Milan Bergamo           | Berlin Brandenburg   | 13 Apr 2022 | 18 Apr 2022 |
+      | Milan Bergamo           | Berlin Brandenburg   | 13 Apr 2022 | 18 Apr 2022 |

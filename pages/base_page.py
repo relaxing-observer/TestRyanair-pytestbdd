@@ -1,11 +1,11 @@
 import allure
 
 
-class BasePage:
+class BasePage(object):
     """
     Class for base page of website with URL. URL is defined in class Links module Links.
     """
-    def __init__(self, browser, url, timeout=2):
+    def __init__(self, browser, url):
         """
         browser: driver instance. url: correct URL for tests
         timeout: Time (seconds) for implicitly waiting of any
@@ -13,9 +13,8 @@ class BasePage:
         """
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)
 
-    @allure.step("Opening the page with")
+    @allure.step("Opening the page")
     def open(self):
         """
         Method opens the transferred link in initialization method.

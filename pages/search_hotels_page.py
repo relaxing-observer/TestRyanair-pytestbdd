@@ -25,10 +25,10 @@ class SearchHotelsPage(BrowserHelper, BasePage):
         is_url_correct = self.wait_phrase_in_url(SearchHotelsPageLocators.URL_IDENTIFIER)
         assert is_url_correct, "Probably you don't chose flight"
 
-    @allure.step("Should be accomodation card")
-    def should_be_accomodation_card(self):
-        accomodation_card = self.find_visible_element(*SearchHotelsPageLocators.ACCOMODATION_CARD)
-        assert accomodation_card, "There are no accomodation cards with hotels on the page"
+    @allure.step("Should be accommodation card")
+    def should_be_accommodation_card(self):
+        accommodation_card = self.find_visible_element(*SearchHotelsPageLocators.ACCOMMODATION_CARD)
+        assert accommodation_card, "There are no accommodation cards with hotels on the page"
 
     @allure.step("Should be correct destination name")
     def should_be_correct_location_name(self, location):
@@ -39,6 +39,3 @@ class SearchHotelsPage(BrowserHelper, BasePage):
     def should_be_correct_dates(self, check_in_date, check_out_date):
         actual_dates = self.find_visible_element(*SearchHotelsPageLocators.ACTUAL_DATES_SUMMARY)
         assert check_in_date and check_out_date in actual_dates.text, "Given dates is not in actual dates on the page"
-
-
-

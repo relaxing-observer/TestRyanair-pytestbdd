@@ -95,7 +95,6 @@ class BrowserHelper(BasePage):
         self.highlight(required_element)
         return required_element
 
-
     def highlight(self, element):
         """
         Highlights (blinks) a Selenium Webdriver element
@@ -107,7 +106,7 @@ class BrowserHelper(BasePage):
 
         original_style = element.get_attribute('style')
         apply_style("background: yellow; border: 2px solid red;")
-        time.sleep(.1)
+        time.sleep(.05)
         apply_style(original_style)
 
     @allure.step("Send values to the form of element '{1}' '{2}' after clearing")

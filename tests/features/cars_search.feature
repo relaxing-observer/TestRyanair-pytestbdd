@@ -17,5 +17,5 @@ Background:
     Examples: Hotels
     | location    | pick-up-date    | drop-off-date  | pick-up-time | drop-off-time |
     | Oslo        | 27 Apr 2022     | 5 May 2022     | 14:00        | 19:00         |
-     cars | Prague      | 13 Apr 2022     | 18 Apr 2022    | 11:00        | 21:00         |
-     cars | Vienna        | 13 Apr 2022     | 18 Apr 2022    | 12:00        | 16:00         |
+    | Prague      | 13 Apr 2022     | 18 Apr 2022    | 11:00        | 21:00         |
+    | Vienna      | 13 Apr 2022     | 18 Apr 2022    | 12:00        | 16:00         |

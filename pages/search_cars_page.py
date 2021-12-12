@@ -7,8 +7,11 @@ from .locators.locators import SearchCarsPageLocators
 class SearchCarsPage(BrowserHelper, BasePage):
     @allure.step("Accept cookies")
     def accept_cookies(self):
-        accept_cookies_button = self.find_visible_element(*SearchCarsPageLocators.ACCEPT_COOKIES_BUTTON)
-        accept_cookies_button.click()
+        try:
+            accept_cookies_button = self.find_visible_element(*SearchCarsPageLocators.ACCEPT_COOKIES_BUTTON, timeout=1)
+            accept_cookies_button.click()
+        except:
+            pass
 
     @allure.step("Should be car card")
     def should_be_car_card(self):
@@ -43,7 +46,7 @@ class SearchCarsPage(BrowserHelper, BasePage):
         actual_search_summary = self.find_visible_element(*SearchCarsPageLocators.SEARCH_SUMMARY)
         assert pick_up_hours in actual_search_summary.text, "There are no correct time to drop off"
 
-    @allure.step("Go to home page")
-    def go_home_page(self):
+    @allure.step("Go to main page")
+    def go_to_main_page(self):
         main_logo = self.find_visible_element(*SearchCarsPageLocators.MAIN_LOGO)
         main_logo.click()
