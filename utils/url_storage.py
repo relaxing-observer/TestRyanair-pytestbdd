@@ -1,4 +1,4 @@
-class Links:
+class PageUrl:
     """
     Links of pages for required tests.
     """
@@ -8,4 +8,8 @@ class Links:
 
     @staticmethod
     def get_page_link(name):
-        return Links.__links_storage[name]
+        return PageUrl.__links_storage[name]
+
+class IdentityPhraseUrl:
+    SearchFlightsPage = "trip/flights/select"
+    SearchHotelsPage = "rooms.ryanair.com"

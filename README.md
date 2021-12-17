@@ -36,6 +36,10 @@ Make sure you have python3.10 installed on your machine by typing in cmd ``pytho
 **For all tests runs you should to type commands in project directory.**
 **You should type your actual credentials to commandline instead of < USER@EMAIL.COM > and < PASSWORD > in every case (without brackets).**
 
+To run all scenarios (flights, hotels, cars search) and create report:
+
+`` pipenv run python -m pytest -v --tb=line --user=<USER@EMAIL.COM> --password=<PASSWORD> 
+ --alluredir=report_data``
 
 To run scenario steps in feature "Verify user is finding flights in specified dates" and create report:
 

@@ -27,7 +27,7 @@ def pytest_addoption(parser):
 
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="package")
 def browser(request):
     '''
     Method automatically initializes driver for browser by ChromeDriverManager.

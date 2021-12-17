@@ -53,7 +53,6 @@ class SearchCarsPageLocators:
 
 
 class SearchFlightsPageLocators:
-    URL_IDENTIFIER = "trip/flights/select"
     FLIGHT_CARD = (By.XPATH, "//flight-card")
     FLIGHT_DETAILS = (By.XPATH, "//flights-trip-details/div")
     DROPDOWN_PROFILE = (By.XPATH, "//logged-in")
@@ -84,7 +83,6 @@ class SearchFlightsPageLocators:
 
 
 class SearchHotelsPageLocators:
-    URL_IDENTIFIER = "rooms.ryanair.com"
     ACCOMMODATION_CARD = (By.XPATH, "//rooms-accommodation-card[@class]")
     ACCEPT_COOKIES_BUTTON = (By.XPATH,
                              "//div[@id='cookie-popup-with-overlay']//button["
